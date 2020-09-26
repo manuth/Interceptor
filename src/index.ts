@@ -1,5 +1,4 @@
-export { Interception } from "./Interception";
-export { InterceptionCollection } from "./InterceptionCollection";
-export { Interceptor } from "./Interceptor";
-export { MethodInterception } from "./MethodInterception";
-export { PropertyInterception } from "./PropertyInterception";
+export = async (): Promise<void> =>
+{
+    console.log("Hello World");
+};

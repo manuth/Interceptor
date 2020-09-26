@@ -1,13 +1,8 @@
-import Assert = require("assert");
+import { InterceptorTests } from "./Interceptor.test";
 
 suite(
     "Interceptor",
     () =>
     {
-        test(
-            "Example…",
-            () =>
-            {
-                Assert.strictEqual(1, 1);
-            });
+        InterceptorTests();
     });

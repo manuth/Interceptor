@@ -39,10 +39,13 @@
     "test": "mocha",
     "prepare": "npm run rebuild"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0"
+  },
   "devDependencies": {
     "@manuth/eslint-plugin-typescript": "^2.3.2",
     "@manuth/tsconfig": "^1.2.3",
+    "@types/lodash.clonedeep": "^4.5.6",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.11.1",
     "@typescript-eslint/eslint-plugin": "^4.1.1",

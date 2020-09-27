@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.0...dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.1...dev)
+
+## Interceptor v1.0.1
+### Fixed
+  - The basic functionality by adding missing exports
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.0...v1.0.1)
 
 ## Interceptor v1.0.0
   - Initial release

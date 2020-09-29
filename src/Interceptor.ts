@@ -9,11 +9,6 @@ import { MethodInterception } from "./MethodInterception";
 export class Interceptor<T extends object>
 {
     /**
-     * The backup of the target of the interceptor.
-     */
-    private backup: T;
-
-    /**
      * The target of the interceptor.
      */
     private target: T;
@@ -44,8 +39,6 @@ export class Interceptor<T extends object>
      */
     public constructor(target: T, freeze?: boolean)
     {
-        this.backup = target;
-
         if (freeze)
         {
             let clone = cloneDeep(target);
@@ -93,7 +86,7 @@ export class Interceptor<T extends object>
                     }
                     else
                     {
-                        return property in this.backup;
+                        return property in this.target;
                     }
                 },
                 get: (target: T, property: keyof T): Partial<T>[keyof T] =>
@@ -104,25 +97,20 @@ export class Interceptor<T extends object>
                     }
                     else
                     {
-                        return this.backup[property];
+                        return this.target[property];
                     }
                 },
                 set: (target: T, property: keyof T, value: any, receiver: any): boolean =>
                 {
-                    if (!this.Disposed)
+                    if (
+                        !this.Disposed &&
+                        this.interceptions.has(property))
                     {
-                        if (this.interceptions.has(property))
-                        {
-                            this.interceptions.get(property)?.Set(target, property, value);
-                        }
-                        else
-                        {
-                            this.target[property] = value;
-                        }
+                        this.interceptions.get(property)?.Set(target, property, value);
                     }
                     else
                     {
-                        this.backup[property] = value;
+                        this.target[property] = value;
                     }
 
                     return true;

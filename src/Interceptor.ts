@@ -77,7 +77,7 @@ export class Interceptor<T extends object>
                             ];
 
                             let interception = this.interceptions.get(property);
-                            return interception?.Has?.(target, property) ?? properties.some((property) => interception[property]);
+                            return interception?.Has?.(target, property) ?? properties.some((property) => interception?.[property]);
                         }
                         else
                         {
@@ -100,7 +100,7 @@ export class Interceptor<T extends object>
                         return this.target[property];
                     }
                 },
-                set: (target: T, property: keyof T, value: any, receiver: any): boolean =>
+                set: (target: T, property: keyof T, value: any): boolean =>
                 {
                     if (
                         !this.Disposed &&

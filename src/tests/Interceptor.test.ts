@@ -311,6 +311,9 @@ export function InterceptorTests(): void
                                 {
                                     interceptor.AddProperty(propertyName, {});
                                     Assert.ok(!(propertyName in proxy));
+                                    interceptor.Delete(propertyName);
+                                    interceptor.AddProperty(propertyName, null);
+                                    Assert.ok(!(propertyName in proxy));
                                 });
                         });
 

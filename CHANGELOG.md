@@ -6,7 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.1...dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.0...dev)
+
+## Interceptor v2.0.0
+### Added
+  - A method for clearing all interceptions
+  - A feature for setting the visibility of properties
+  - A feature for creating setters of properties
+  - A readme-file
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.1...v2.0.0)
 
 ## Interceptor v1.0.1
 ### Fixed

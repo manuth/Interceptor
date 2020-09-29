@@ -169,6 +169,14 @@ export class Interceptor<T extends object>
     }
 
     /**
+     * Clears all interceptions.
+     */
+    public Clear(): void
+    {
+        this.interceptions.clear();
+    }
+
+    /**
      * Disposes the interceptor.
      */
     public Dispose(): void

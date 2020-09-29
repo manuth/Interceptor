@@ -45,6 +45,8 @@ export class Interceptor<T extends object>
      */
     public constructor(target: T, freeze?: boolean)
     {
+        this.backup = target;
+
         if (freeze)
         {
             let clone = cloneDeep(target);

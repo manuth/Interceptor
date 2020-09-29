@@ -39,13 +39,7 @@ export function InterceptorTests(): void
             setup(
                 () =>
                 {
-                    if (interceptor)
-                    {
-                        for (let key of Array.from(interceptor.Interceptions.keys()))
-                        {
-                            interceptor.Delete(key);
-                        }
-                    }
+                    interceptor?.Clear();
                 });
 
             suite(
@@ -101,9 +95,11 @@ export function InterceptorTests(): void
                                 {
                                     interceptor.AddProperty(
                                         propertyName,
-                                        () =>
                                         {
-                                            return propertyReplacement;
+                                            Get: () =>
+                                            {
+                                                return propertyReplacement;
+                                            }
                                         });
                                 });
 
@@ -189,7 +185,12 @@ export function InterceptorTests(): void
                                 "Checking whether properties are intercepted correctly…",
                                 () =>
                                 {
-                                    interceptor.AddProperty(propertyName, () => propertyReplacement);
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Get: () => propertyReplacement
+                                        });
+
                                     Assert.strictEqual(proxy[propertyName], propertyReplacement);
                                 });
 
@@ -220,12 +221,96 @@ export function InterceptorTests(): void
 
                                     interceptor.AddProperty(
                                         propertyName,
-                                        (target, property) =>
                                         {
-                                            return manipulator(target[property]);
+                                            Get: (target, property) =>
+                                            {
+                                                return manipulator(target[property]);
+                                            }
                                         });
 
                                     Assert.strictEqual(proxy[propertyName], manipulator(target[propertyName]));
+                                });
+
+                            test(
+                                "Checking whether readonly properties can be created…",
+                                () =>
+                                {
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Get: (target, property) =>
+                                            {
+                                                return target[property];
+                                            }
+                                        });
+
+                                    Assert.doesNotThrow(() => proxy[propertyName]);
+                                    Assert.throws(() => proxy[propertyName] = 10);
+                                });
+
+                            test(
+                                "Checking whether write-only properties can be created…",
+                                () =>
+                                {
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Set: () => { }
+                                        });
+
+                                    Assert.doesNotThrow(() => proxy[propertyName] = 10);
+                                    Assert.throws(() => proxy[propertyName]);
+                                });
+
+                            test(
+                                "Checking whether the visibility of properties can be specified…",
+                                () =>
+                                {
+                                    let visible = true;
+                                    let value = 10;
+
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Has: () => visible,
+                                            Get: () => value
+                                        });
+
+                                    Assert.ok(propertyName in proxy);
+                                    Assert.strictEqual(proxy[propertyName], value);
+                                    visible = false;
+                                    Assert.ok(!(propertyName in proxy));
+                                    Assert.strictEqual(proxy[propertyName], value);
+                                });
+
+                            test(
+                                "Checking whether properties with a getter or a setter are visible by default…",
+                                () =>
+                                {
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Get: (target) => target[propertyName]
+                                        });
+
+                                    Assert.ok(propertyName in proxy);
+                                    interceptor.Delete(propertyName);
+
+                                    interceptor.AddProperty(
+                                        propertyName,
+                                        {
+                                            Set: () => { }
+                                        });
+
+                                    Assert.ok(propertyName in proxy);
+                                });
+
+                            test(
+                                "Checking whether properties without getter or setter are invisible…",
+                                () =>
+                                {
+                                    interceptor.AddProperty(propertyName, {});
+                                    Assert.ok(!(propertyName in proxy));
                                 });
                         });
 

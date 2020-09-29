@@ -1,19 +1,13 @@
 import cloneDeep = require("lodash.clonedeep");
-import { Interception } from "./Interception";
+import { IInterception } from "./IInterception";
 import { InterceptionCollection } from "./InterceptionCollection";
 import { MethodInterception } from "./MethodInterception";
-import { PropertyInterception } from "./PropertyInterception";
 
 /**
  * Provides the functionality to intercept methods of an object.
  */
 export class Interceptor<T extends object>
 {
-    /**
-     * The backup of the target of the interceptor.
-     */
-    private backup: T;
-
     /**
      * The target of the interceptor.
      */
@@ -71,16 +65,55 @@ export class Interceptor<T extends object>
         this.proxy = new Proxy<T>(
             this.target,
             {
+                has: (target: T, property: keyof T) =>
+                {
+                    if (!this.Disposed)
+                    {
+                        if (this.interceptions.has(property))
+                        {
+                            let properties: Array<keyof IInterception<T, keyof T>> = [
+                                "Get",
+                                "Set"
+                            ];
+
+                            let interception = this.interceptions.get(property);
+                            return interception?.Has?.(target, property) ?? properties.some((property) => interception?.[property]);
+                        }
+                        else
+                        {
+                            return property in target;
+                        }
+                    }
+                    else
+                    {
+                        return property in this.target;
+                    }
+                },
                 get: (target: T, property: keyof T): Partial<T>[keyof T] =>
                 {
                     if (!this.Disposed)
                     {
-                        return this.interceptions.get(property)?.(target, property) ?? target[property];
+                        return this.interceptions.get(property)?.Get(target, property) ?? target[property];
                     }
                     else
                     {
-                        return this.backup[property];
+                        return this.target[property];
                     }
+                },
+                set: (target: T, property: keyof T, value: any): boolean =>
+                {
+                    if (
+                        !this.Disposed &&
+                        this.interceptions.has(property))
+                    {
+                        this.interceptions.get(property)?.Set(target, property, value);
+                    }
+                    else
+                    {
+                        this.target[property] = value;
+                    }
+
+                    return true;
                 }
             });
     }
@@ -96,7 +129,7 @@ export class Interceptor<T extends object>
     /**
      * Gets the installed interceptions.
      */
-    public get Interceptions(): ReadonlyMap<keyof T, Interception<T, keyof T>>
+    public get Interceptions(): ReadonlyMap<keyof T, IInterception<T, keyof T>>
     {
         return new Map(this.interceptions);
     }
@@ -126,11 +159,11 @@ export class Interceptor<T extends object>
      * @param interception
      * The interception to add.
      */
-    public AddProperty<TKey extends keyof T>(key: TKey, interception: PropertyInterception<T, TKey>): void
+    public AddProperty<TKey extends keyof T>(key: TKey, interception: IInterception<T, TKey>): void
     {
         if (!this.interceptions.has(key))
         {
-            this.interceptions.set(key, (target, key): T[TKey] => interception(target, key));
+            this.interceptions.set(key, interception);
         }
         else
         {
@@ -151,9 +184,11 @@ export class Interceptor<T extends object>
     {
         this.AddProperty(
             key,
-            (target, key): T[TKey] =>
             {
-                return ((...args: unknown[]): unknown => interception(target, target[key], ...args)) as any as T[TKey];
+                Get: (target, key): T[TKey] =>
+                {
+                    return ((...args: unknown[]): unknown => interception(target, target[key], ...args)) as any as T[TKey];
+                }
             });
     }
 
@@ -169,12 +204,19 @@ export class Interceptor<T extends object>
     }
 
     /**
+     * Clears all interceptions.
+     */
+    public Clear(): void
+    {
+        this.interceptions.clear();
+    }
+
+    /**
      * Disposes the interceptor.
      */
     public Dispose(): void
     {
         this.disposed = true;
         this.interceptions.clear();
-        this.target = undefined;
     }
 }

@@ -1,9 +1,9 @@
-import { Interception } from "./Interception";
+import { IInterception } from "./IInterception";
 
 /**
  * Represents a collection of interceptions.
  */
-export class InterceptionCollection<T extends object> extends Map<keyof T, Interception<T, keyof T>>
+export class InterceptionCollection<T extends object> extends Map<keyof T, IInterception<T, keyof T>>
 {
     /**
      * Gets an interception of the collection.
@@ -14,9 +14,9 @@ export class InterceptionCollection<T extends object> extends Map<keyof T, Inter
      * @returns
      * The interception with the specified key.
      */
-    public get<TKey extends keyof T>(key: TKey): Interception<T, TKey>
+    public get<TKey extends keyof T>(key: TKey): IInterception<T, TKey>
     {
-        return super.get(key as keyof T) as Interception<T, TKey>;
+        return super.get(key as keyof T) as IInterception<T, TKey>;
     }
 
     /**
@@ -31,7 +31,7 @@ export class InterceptionCollection<T extends object> extends Map<keyof T, Inter
      * @returns
      * This collection.
      */
-    public set<TKey extends keyof T>(key: TKey, value: Interception<T, TKey>): this
+    public set<TKey extends keyof T>(key: TKey, value: IInterception<T, TKey>): this
     {
         return super.set(key, value);
     }

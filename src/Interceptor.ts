@@ -218,6 +218,5 @@ export class Interceptor<T extends object>
     {
         this.disposed = true;
         this.interceptions.clear();
-        this.target = undefined;
     }
 }

@@ -1,4 +1,4 @@
-import Assert = require("assert");
+import { doesNotThrow, ok, strictEqual, throws } from "assert";
 import { Random } from "random-js";
 import { Interceptor } from "../Interceptor";
 import { MethodInterception } from "../MethodInterception";
@@ -50,7 +50,7 @@ export function InterceptorTests(): void
                         "Checking whether the constructor can be invoked without errors…",
                         () =>
                         {
-                            Assert.doesNotThrow(() => { interceptor = new Interceptor(target); });
+                            doesNotThrow(() => { interceptor = new Interceptor(target); });
                         });
                 });
 
@@ -62,7 +62,7 @@ export function InterceptorTests(): void
                         "Checking whether the target can be queried…",
                         () =>
                         {
-                            Assert.strictEqual(target, interceptor.Target);
+                            strictEqual(target, interceptor.Target);
                         });
                 });
 
@@ -74,7 +74,7 @@ export function InterceptorTests(): void
                         "Checking whether the interceptions can be queried…",
                         () =>
                         {
-                            Assert.doesNotThrow(
+                            doesNotThrow(
                                 () =>
                                 {
                                     for (let { } of interceptor.Interceptions) { }
@@ -90,7 +90,7 @@ export function InterceptorTests(): void
                         "Checking whether property-interceptions can be added…",
                         () =>
                         {
-                            Assert.doesNotThrow(
+                            doesNotThrow(
                                 () =>
                                 {
                                     interceptor.AddProperty(
@@ -103,7 +103,7 @@ export function InterceptorTests(): void
                                         });
                                 });
 
-                            Assert.ok(interceptor.Interceptions.has(propertyName));
+                            ok(interceptor.Interceptions.has(propertyName));
                         });
 
                     test(
@@ -111,7 +111,7 @@ export function InterceptorTests(): void
                         () =>
                         {
                             interceptor.AddProperty(propertyName, null);
-                            Assert.throws(() => interceptor.AddProperty(propertyName, null), RangeError);
+                            throws(() => interceptor.AddProperty(propertyName, null), RangeError);
                         });
                 });
 
@@ -123,7 +123,7 @@ export function InterceptorTests(): void
                         "Checking whether property-interceptions can be added…",
                         () =>
                         {
-                            Assert.doesNotThrow(
+                            doesNotThrow(
                                 () =>
                                 {
                                     interceptor.AddMethod(
@@ -134,7 +134,7 @@ export function InterceptorTests(): void
                                         });
                                 });
 
-                            Assert.ok(interceptor.Interceptions.has(methodName));
+                            ok(interceptor.Interceptions.has(methodName));
                         });
                 });
 
@@ -148,13 +148,13 @@ export function InterceptorTests(): void
                         {
                             for (let key of [propertyName, methodName])
                             {
-                                Assert.doesNotThrow(
+                                doesNotThrow(
                                     () =>
                                     {
                                         interceptor.Delete(key);
                                     });
 
-                                Assert.ok(!interceptor.Interceptions.has(key));
+                                ok(!interceptor.Interceptions.has(key));
                             }
                         });
                 });
@@ -191,14 +191,14 @@ export function InterceptorTests(): void
                                             Get: () => propertyReplacement
                                         });
 
-                                    Assert.strictEqual(proxy[propertyName], propertyReplacement);
+                                    strictEqual(proxy[propertyName], propertyReplacement);
                                 });
 
                             test(
                                 "Checking whether untouched properties can be queried…",
                                 () =>
                                 {
-                                    Assert.strictEqual(proxy[untouchedPropertyName], target[untouchedPropertyName]);
+                                    strictEqual(proxy[untouchedPropertyName], target[untouchedPropertyName]);
                                 });
 
                             test(
@@ -228,7 +228,7 @@ export function InterceptorTests(): void
                                             }
                                         });
 
-                                    Assert.strictEqual(proxy[propertyName], manipulator(target[propertyName]));
+                                    strictEqual(proxy[propertyName], manipulator(target[propertyName]));
                                 });
 
                             test(
@@ -244,8 +244,8 @@ export function InterceptorTests(): void
                                             }
                                         });
 
-                                    Assert.doesNotThrow(() => proxy[propertyName]);
-                                    Assert.throws(() => proxy[propertyName] = 10);
+                                    doesNotThrow(() => proxy[propertyName]);
+                                    throws(() => proxy[propertyName] = 10);
                                 });
 
                             test(
@@ -258,8 +258,8 @@ export function InterceptorTests(): void
                                             Set: () => { }
                                         });
 
-                                    Assert.doesNotThrow(() => proxy[propertyName] = 10);
-                                    Assert.throws(() => proxy[propertyName]);
+                                    doesNotThrow(() => proxy[propertyName] = 10);
+                                    throws(() => proxy[propertyName]);
                                 });
 
                             test(
@@ -276,11 +276,11 @@ export function InterceptorTests(): void
                                             Get: () => value
                                         });
 
-                                    Assert.ok(propertyName in proxy);
-                                    Assert.strictEqual(proxy[propertyName], value);
+                                    ok(propertyName in proxy);
+                                    strictEqual(proxy[propertyName], value);
                                     visible = false;
-                                    Assert.ok(!(propertyName in proxy));
-                                    Assert.strictEqual(proxy[propertyName], value);
+                                    ok(!(propertyName in proxy));
+                                    strictEqual(proxy[propertyName], value);
                                 });
 
                             test(
@@ -293,7 +293,7 @@ export function InterceptorTests(): void
                                             Get: (target) => target[propertyName]
                                         });
 
-                                    Assert.ok(propertyName in proxy);
+                                    ok(propertyName in proxy);
                                     interceptor.Delete(propertyName);
 
                                     interceptor.AddProperty(
@@ -302,7 +302,7 @@ export function InterceptorTests(): void
                                             Set: () => { }
                                         });
 
-                                    Assert.ok(propertyName in proxy);
+                                    ok(propertyName in proxy);
                                 });
 
                             test(
@@ -310,10 +310,10 @@ export function InterceptorTests(): void
                                 () =>
                                 {
                                     interceptor.AddProperty(propertyName, {});
-                                    Assert.ok(!(propertyName in proxy));
+                                    ok(!(propertyName in proxy));
                                     interceptor.Delete(propertyName);
                                     interceptor.AddProperty(propertyName, null);
-                                    Assert.ok(!(propertyName in proxy));
+                                    ok(!(propertyName in proxy));
                                 });
                         });
 
@@ -332,14 +332,14 @@ export function InterceptorTests(): void
                                             return methodReplacement();
                                         });
 
-                                    Assert.strictEqual(proxy[methodName](), methodReplacement());
+                                    strictEqual(proxy[methodName](), methodReplacement());
                                 });
 
                             test(
                                 "Checking whether untouched methods can be executed…",
                                 () =>
                                 {
-                                    Assert.strictEqual(proxy[untouchedMethodName](), target[untouchedMethodName]());
+                                    strictEqual(proxy[untouchedMethodName](), target[untouchedMethodName]());
                                 });
 
                             test(
@@ -372,7 +372,7 @@ export function InterceptorTests(): void
                                             return manipulator(target, delegate);
                                         });
 
-                                    Assert.strictEqual(proxy[methodName](), manipulator(target, target[methodName]));
+                                    strictEqual(proxy[methodName](), manipulator(target, target[methodName]));
                                 });
 
                             test(
@@ -421,7 +421,7 @@ export function InterceptorTests(): void
                                     };
 
                                     testInterceptor.AddMethod(testMethodName, manipulator);
-                                    Assert.strictEqual(testInterceptor.Proxy[testMethodName](testArg), manipulator(testTarget, testTarget[testMethodName], testArg));
+                                    strictEqual(testInterceptor.Proxy[testMethodName](testArg), manipulator(testTarget, testTarget[testMethodName], testArg));
                                 });
                         });
                 });

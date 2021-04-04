@@ -65,7 +65,7 @@ export class Interceptor<T extends object>
         this.proxy = new Proxy<T>(
             this.target,
             {
-                has: (target: T, property: keyof T) =>
+                has: (target: T, property: keyof T & (string | symbol)) =>
                 {
                     if (!this.Disposed)
                     {
@@ -89,7 +89,7 @@ export class Interceptor<T extends object>
                         return property in this.target;
                     }
                 },
-                get: (target: T, property: keyof T): Partial<T>[keyof T] =>
+                get: (target: T, property: keyof T & (string | symbol)): Partial<T>[keyof T] =>
                 {
                     if (!this.Disposed)
                     {
@@ -100,7 +100,7 @@ export class Interceptor<T extends object>
                         return this.target[property];
                     }
                 },
-                set: (target: T, property: keyof T, value: any): boolean =>
+                set: (target: T, property: keyof T & (string | symbol), value: any): boolean =>
                 {
                     if (
                         !this.Disposed &&

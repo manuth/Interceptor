@@ -6,16 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.1...dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.2...dev)
 
-## Interceptor v2.0.1
+## Interceptor v2.0.2
 ### Fixed
   - Vulnerabilities in dependencies
+
+### Added
+  - A workflow for merging Dependabot-PRs
+  - A workflow for analyzing the code
 
 ### Updated
   - All dependencies
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.0...v2.0.1)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.0...v2.0.2)
 
 ## Interceptor v2.0.0
 ### Added

@@ -1,6 +1,6 @@
 {
   "name": "@manuth/interceptor",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Provides a convenient way to intercept method- property- and accessor-calls of an object.",
   "author": "Manuel Thalmann <m@nuth.ch>",
   "license": "MIT",

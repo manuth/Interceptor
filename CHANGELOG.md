@@ -6,7 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.2...dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.3...dev)
+
+## Interceptor v2.0.3
+### Fixed
+  - Broken dependabot-settings
+  - Broken drone-pipelines
+  - Broken Auto-Merge workflow
+
+### Updated
+  - All dependencies
+  - Drone-pipelines to use small-sized images
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.2...v2.0.3)
 
 ## Interceptor v2.0.2
 ### Fixed

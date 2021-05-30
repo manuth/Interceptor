@@ -6,7 +6,7 @@ import { MethodInterception } from "./MethodInterception";
 /**
  * Provides the functionality to intercept methods of an object.
  */
-export class Interceptor<T extends object>
+export class Interceptor<T extends Record<string | number | symbol, unknown>>
 {
     /**
      * The target of the interceptor.

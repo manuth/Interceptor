@@ -3,7 +3,7 @@ import { IInterception } from "./IInterception";
 /**
  * Represents a collection of interceptions.
  */
-export class InterceptionCollection<T extends object> extends Map<keyof T, IInterception<T, keyof T>>
+export class InterceptionCollection<T extends Record<string | number | symbol, unknown>> extends Map<keyof T, IInterception<T, keyof T>>
 {
     /**
      * Gets an interception of the collection.

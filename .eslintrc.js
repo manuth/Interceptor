@@ -14,15 +14,5 @@ module.exports = {
             join(__dirname, "tsconfig.eslint.json"),
             join(__dirname, "src", "tests", "tsconfig.json")
         ]
-    },
-    rules: {
-        "@typescript-eslint/ban-types": [
-            "warn",
-            {
-                types: {
-                    object: false
-                }
-            }
-        ]
     }
 };

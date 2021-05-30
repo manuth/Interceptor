@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.3...dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.3..dev)
 
 ## Interceptor v2.0.3
 ### Fixed
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - All dependencies
   - Drone-pipelines to use small-sized images
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.2...v2.0.3)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.2..v2.0.3)
 
 ## Interceptor v2.0.2
 ### Fixed
@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Updated
   - All dependencies
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.0...v2.0.2)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.0..v2.0.2)
 
 ## Interceptor v2.0.0
 ### Added
@@ -40,13 +40,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - A feature for creating setters of properties
   - A readme-file
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.1...v2.0.0)
+[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.1..v2.0.0)
 
 ## Interceptor v1.0.1
 ### Fixed
   - The basic functionality by adding missing exports
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.0...v1.0.1)
+[Show differences](https://github.com/manuth/Interceptor/compare/v1.0.0..v1.0.1)
 
 ## Interceptor v1.0.0
   - Initial release
@@ -54,4 +54,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
   - Methods for intercepting object-calls
 
-[Show differences](https://github.com/manuth/Interceptor/compare/1e679a3b8a585a14f2c84cf46fcc36fd055c703a...v1.0.0)
+[Show differences](https://github.com/manuth/Interceptor/compare/1e679a3b8a585a14f2c84cf46fcc36fd055c703a..v1.0.0)

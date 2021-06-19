@@ -4,7 +4,7 @@ import { Interceptor } from "../Interceptor";
 import { MethodInterception } from "../MethodInterception";
 
 /**
- * Registers tests for the `Interceptor` class.
+ * Registers tests for the {@link Interceptor `Interceptor<T>`} class.
  */
 export function InterceptorTests(): void
 {

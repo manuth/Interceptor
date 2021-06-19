@@ -5,6 +5,9 @@ import { MethodInterception } from "./MethodInterception";
 
 /**
  * Provides the functionality to intercept methods of an object.
+ *
+ * @template T
+ * The type of the target of the {@link Interceptor `Interceptor`}.
  */
 export class Interceptor<T extends Record<string | number | symbol, unknown>>
 {
@@ -29,13 +32,13 @@ export class Interceptor<T extends Record<string | number | symbol, unknown>>
     private disposed: boolean;
 
     /**
-     * Initializes a new instance of the `Interceptor<T>` class.
+     * Initializes a new instance of the {@link Interceptor `Interceptor<T>`} class.
      *
      * @param target
      * The target of the interceptor.
      *
      * @param freeze
-     * A value indicating whether the state of the members .
+     * A value indicating whether the interceptor should ignore future changes made to the {@link target `target`}.
      */
     public constructor(target: T, freeze?: boolean)
     {
@@ -196,7 +199,7 @@ export class Interceptor<T extends Record<string | number | symbol, unknown>>
      * Deletes an interception.
      *
      * @param key
-     * The key to delete.
+     * The key of the interception to delete.
      */
     public Delete(key: keyof T): void
     {

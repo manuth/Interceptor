@@ -1,38 +1,29 @@
+import { ExistenceChecker } from "./ExistenceChecker";
+import { PropertyGetter } from "./PropertyGetter";
+
 /**
  * Represents the interception of a property.
+ *
+ * @template T
+ * The type of the target of the interception.
+ *
+ * @template TKey
+ * The key of the intercepted member.
  */
 export interface IInterception<T, TKey extends keyof T>
 {
     /**
-     * A method for determining whether a key exists.
-     *
-     * @param target
-     * The target this interception belongs to.
-     *
-     * @param key
-     * The key of the property.
-     *
-     * @returns
-     * A value indicating whether the key exists in the `target`.
+     * A function for determining whether the specified key exists.
      */
-    Has?: (target: T, key: TKey) => boolean;
+    Has?: ExistenceChecker<T, TKey>;
 
     /**
-     * A method for resolving the property.
-     *
-     * @param target
-     * The target this interception belongs to.
-     *
-     * @param key
-     * The key of the property.
-     *
-     * @returns
-     * The manipulated value.
+     * A function for resolving the property.
      */
-    Get?: (target: T, key: TKey) => T[TKey];
+    Get?: PropertyGetter<T, TKey>;
 
     /**
-     * A method for setting the property.
+     * A function for setting the property.
      *
      * @param target
      * The target this interception belongs to.

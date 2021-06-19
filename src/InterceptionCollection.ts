@@ -2,6 +2,9 @@ import { IInterception } from "./IInterception";
 
 /**
  * Represents a collection of interceptions.
+ *
+ * @template T
+ * The type of the target of the interceptions.
  */
 export class InterceptionCollection<T extends Record<string | number | symbol, unknown>> extends Map<keyof T, IInterception<T, keyof T>>
 {
@@ -9,10 +12,10 @@ export class InterceptionCollection<T extends Record<string | number | symbol, u
      * Gets an interception of the collection.
      *
      * @param key
-     * The key whose value to get.
+     * The key whose interception to get.
      *
      * @returns
-     * The interception with the specified key.
+     * The interception with the specified {@link key `key`}.
      */
     public override get<TKey extends keyof T>(key: TKey): IInterception<T, TKey>
     {
@@ -23,16 +26,16 @@ export class InterceptionCollection<T extends Record<string | number | symbol, u
      * Sets an interception of the collection.
      *
      * @param key
-     * The key whose value to set.
+     * The key whose interception to set.
      *
-     * @param value
-     * The value to set.
+     * @param interception
+     * The interception to set.
      *
      * @returns
      * This collection.
      */
-    public override set<TKey extends keyof T>(key: TKey, value: IInterception<T, TKey>): this
+    public override set<TKey extends keyof T>(key: TKey, interception: IInterception<T, TKey>): this
     {
-        return super.set(key, value);
+        return super.set(key, interception);
     }
 }

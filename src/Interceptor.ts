@@ -9,7 +9,8 @@ import { MethodInterception } from "./MethodInterception";
  * @template T
  * The type of the target of the {@link Interceptor `Interceptor`}.
  */
-export class Interceptor<T extends Record<string | number | symbol, unknown>>
+// eslint-disable-next-line @typescript-eslint/ban-types
+export class Interceptor<T extends {}>
 {
     /**
      * The target of the interceptor.

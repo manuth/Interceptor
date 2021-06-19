@@ -6,7 +6,8 @@ import { IInterception } from "./IInterception";
  * @template T
  * The type of the target of the interceptions.
  */
-export class InterceptionCollection<T extends Record<string | number | symbol, unknown>> extends Map<keyof T, IInterception<T, keyof T>>
+// eslint-disable-next-line @typescript-eslint/ban-types
+export class InterceptionCollection<T extends {}> extends Map<keyof T, IInterception<T, keyof T>>
 {
     /**
      * Gets an interception of the collection.

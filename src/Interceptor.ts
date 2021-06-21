@@ -157,6 +157,9 @@ export class Interceptor<T extends {}>
     /**
      * Adds a new property-interception.
      *
+     * @template TKey
+     * The type of the specified {@link key `key`}.
+     *
      * @param key
      * The key of the interception to add.
      *
@@ -177,6 +180,9 @@ export class Interceptor<T extends {}>
 
     /**
      * Adds a new interception.
+     *
+     * @template TKey
+     * The type of the specified {@link key `key`}.
      *
      * @param key
      * The key of the interception to add.

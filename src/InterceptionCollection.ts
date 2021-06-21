@@ -12,6 +12,9 @@ export class InterceptionCollection<T extends {}> extends Map<keyof T, IIntercep
     /**
      * Gets an interception of the collection.
      *
+     * @template TKey
+     * The type of the specified {@link key `key`}.
+     *
      * @param key
      * The key whose interception to get.
      *
@@ -25,6 +28,9 @@ export class InterceptionCollection<T extends {}> extends Map<keyof T, IIntercep
 
     /**
      * Sets an interception of the collection.
+     *
+     * @template TKey
+     * The type of the specified {@link key `key`}.
      *
      * @param key
      * The key whose interception to set.

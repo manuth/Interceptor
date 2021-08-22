@@ -4,5 +4,7 @@
     "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
-    "typescript.format.placeOpenBraceOnNewLineForFunctions": true
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "mochaExplorer.require": "source-map-support/register",
+    "mochaExplorer.timeout": 0
 }

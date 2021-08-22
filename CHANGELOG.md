@@ -6,7 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.6..dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.7..dev)
+
+## Interceptor v2.0.7
+### Fixed
+  - Vulnerabilities in dependencies
+
+### Added
+  - Support for the Test Explorer UI
+  - Support for `ts-nameof`
+  - Support for parallel step-execution of drone-pipelines
+
+### Updated
+  - All dependencies
+  - Publish-scripts of drone-pipelines
+  - Settings to disable timeouts for mocha unit-tests
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.6..v2.0.7)
 
 ## Interceptor v2.0.6
 ### Updated

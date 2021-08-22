@@ -9,7 +9,7 @@ import { MethodInterception } from "../MethodInterception";
 export function InterceptorTests(): void
 {
     suite(
-        "Interceptor",
+        nameof(Interceptor),
         () =>
         {
             /**
@@ -43,7 +43,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "constructor",
+                nameof(Interceptor.constructor),
                 () =>
                 {
                     test(
@@ -55,7 +55,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "Target",
+                nameof<Interceptor<any>>((interceptor) => interceptor.Target),
                 () =>
                 {
                     test(
@@ -67,7 +67,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "Interceptions",
+                nameof<Interceptor<any>>((interceptor) => interceptor.Interceptions),
                 () =>
                 {
                     test(
@@ -83,7 +83,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "AddProperty",
+                nameof<Interceptor<any>>((interceptor) => interceptor.AddProperty),
                 () =>
                 {
                     test(
@@ -116,7 +116,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "AddMethod",
+                nameof<Interceptor<any>>((interceptor) => interceptor.AddMethod),
                 () =>
                 {
                     test(
@@ -139,7 +139,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "Delete",
+                nameof<Interceptor<any>>((interceptor) => interceptor.Delete),
                 () =>
                 {
                     test(
@@ -160,7 +160,7 @@ export function InterceptorTests(): void
                 });
 
             suite(
-                "Proxy",
+                nameof<Interceptor<any>>((interceptor) => interceptor.Proxy),
                 () =>
                 {
                     let proxy: typeof target;

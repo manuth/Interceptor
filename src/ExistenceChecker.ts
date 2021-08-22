@@ -7,19 +7,7 @@
  * @template TKey
  * The key of the intercepted member.
  */
-export type ExistenceChecker<T, TKey> = IExistenceChecker<T, TKey>["Has"];
-
-/**
- * Provides the functionality to check whether a key exists in an object.
- *
- * @template T
- * The type of the target of the interception.
- *
- * @template TKey
- * The key of the intercepted member.
- */
-interface IExistenceChecker<T, TKey>
-{
+export type ExistenceChecker<T, TKey> =
     /**
      * Checks whether the specified {@link key `key`} exists.
      *
@@ -32,5 +20,4 @@ interface IExistenceChecker<T, TKey>
      * @returns
      * A value indicating whether the specified {@link key `key`} exists in the {@link target `target`}.
      */
-    Has(target: T, key: TKey): boolean;
-}
+    (target: T, key: TKey) => boolean;

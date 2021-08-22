@@ -28,7 +28,7 @@ export class Interceptor<T extends {}>
     private interceptions: InterceptionCollection<T> = new InterceptionCollection();
 
     /**
-     * A value indicating whether the interceptor is dispoed.
+     * A value indicating whether the interceptor is disposed.
      */
     private disposed: boolean;
 
@@ -147,7 +147,7 @@ export class Interceptor<T extends {}>
     }
 
     /**
-     * Gets a value indicating whether the interceptor is dispoed.
+     * Gets a value indicating whether the interceptor is disposed.
      */
     public get Disposed(): boolean
     {

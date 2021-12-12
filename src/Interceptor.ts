@@ -197,7 +197,7 @@ export class Interceptor<T extends {}>
             {
                 Get: (target, key): T[TKey] =>
                 {
-                    return ((...args: unknown[]): unknown => interception(target, target[key], ...args)) as any as T[TKey];
+                    return ((...args: unknown[]): unknown => interception(target, target[key], ...args)) as unknown as T[TKey];
                 }
             });
     }

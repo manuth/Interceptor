@@ -1,4 +1,4 @@
-import { doesNotThrow, ok, strictEqual, throws } from "assert";
+import { doesNotThrow, notStrictEqual, ok, strictEqual, throws } from "assert";
 import { Random } from "random-js";
 import { Interceptor } from "../Interceptor";
 import { MethodInterception } from "../MethodInterception";
@@ -36,6 +36,12 @@ export function InterceptorTests(): void
 
             let interceptor: Interceptor<typeof target>;
 
+            suiteSetup(
+                () =>
+                {
+                    interceptor = new Interceptor(target);
+                });
+
             setup(
                 () =>
                 {
@@ -50,7 +56,18 @@ export function InterceptorTests(): void
                         "Checking whether the constructor can be invoked without errors…",
                         () =>
                         {
-                            doesNotThrow(() => { interceptor = new Interceptor(target); });
+                            doesNotThrow(() => new Interceptor(target));
+                            doesNotThrow(() => new Interceptor(target, true));
+                            doesNotThrow(() => new Interceptor(target, false));
+                        });
+
+                    test(
+                        `Checking whether a frozen clone of the target can be created for the \`${nameof(Interceptor)}\`…`,
+                        () =>
+                        {
+                            let interceptor = new Interceptor(target, true);
+                            interceptor.Target[propertyName]++;
+                            notStrictEqual(interceptor.Target[propertyName], target[propertyName]);
                         });
                 });
 
@@ -165,16 +182,10 @@ export function InterceptorTests(): void
                 {
                     let proxy: typeof target;
 
-                    suite(
-                        "General",
+                    suiteSetup(
                         () =>
                         {
-                            test(
-                                "Checking whether a proxy-object can be created…",
-                                () =>
-                                {
-                                    proxy = interceptor.Proxy;
-                                });
+                            proxy = interceptor.Proxy;
                         });
 
                     suite(

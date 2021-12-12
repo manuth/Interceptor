@@ -47,7 +47,6 @@
   "devDependencies": {
     "@manuth/eslint-plugin-typescript": "^3.2.6",
     "@manuth/tsconfig": "^3.0.0",
-    "@manuth/typescript-eslint-plugin": "^1.4.1",
     "@types/lodash.clonedeep": "^4.5.6",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.12",

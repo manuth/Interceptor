@@ -23,7 +23,7 @@ export class InterceptionCollection<T extends {}> extends Map<keyof T, IIntercep
      */
     public override get<TKey extends keyof T>(key: TKey): IInterception<T, TKey>
     {
-        return super.get(key as keyof T) as IInterception<T, TKey>;
+        return super.get(key as keyof T) as unknown as IInterception<T, TKey>;
     }
 
     /**
@@ -43,6 +43,6 @@ export class InterceptionCollection<T extends {}> extends Map<keyof T, IIntercep
      */
     public override set<TKey extends keyof T>(key: TKey, interception: IInterception<T, TKey>): this
     {
-        return super.set(key, interception);
+        return super.set(key, interception as unknown);
     }
 }

@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Interceptor [Unreleased]
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.8..dev)
+
+## Interceptor v2.0.8
 ### Fixed
   - Vulnerabilities in dependencies
   - Broken drone pipelines
@@ -13,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Updated
   - All dependencies
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.7..dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.7..v2.0.8)
 
 ## Interceptor v2.0.7
 ### Fixed

@@ -1,4 +1,4 @@
-import { InterceptorTests } from "./Interceptor.test";
+import { InterceptorTests } from "./Interceptor.test.js";
 
 suite(
     "Interceptor",

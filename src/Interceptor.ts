@@ -1,7 +1,7 @@
-import cloneDeep = require("lodash.clonedeep");
-import { IInterception } from "./IInterception";
-import { InterceptionCollection } from "./InterceptionCollection";
-import { MethodInterception } from "./MethodInterception";
+import cloneDeep from "lodash.clonedeep";
+import { IInterception } from "./IInterception.js";
+import { InterceptionCollection } from "./InterceptionCollection.js";
+import { MethodInterception } from "./MethodInterception.js";
 
 /**
  * Provides the functionality to intercept methods of an object.

@@ -17,6 +17,12 @@
     "Manipulation",
     "Mutation"
   ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "homepage": "https://github.com/manuth/Interceptor#readme",

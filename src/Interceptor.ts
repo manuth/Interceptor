@@ -174,7 +174,7 @@ export class Interceptor<T extends {}>
         }
         else
         {
-            throw new RangeError(`An interception with the key \`${key}\` already exists!`);
+            throw new RangeError(`An interception with the key \`${key.toString()}\` already exists!`);
         }
     }
 

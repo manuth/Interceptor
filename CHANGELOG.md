@@ -6,7 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Interceptor [Unreleased]
 
-[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.8..dev)
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.9..dev)
+
+## Interceptor v2.0.9
+### Fixed
+  - Vulnerabilities in dependencies
+
+### Update
+  - All dependencies
+
+[Show differences](https://github.com/manuth/Interceptor/compare/v2.0.8..v2.0.9)
 
 ## Interceptor v2.0.8
 ### Fixed

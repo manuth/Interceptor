@@ -1,7 +1,7 @@
-export { ExistenceChecker } from "./ExistenceChecker";
-export { IInterception } from "./IInterception";
-export { InterceptionCollection } from "./InterceptionCollection";
-export { Interceptor } from "./Interceptor";
-export { MethodInterception } from "./MethodInterception";
-export { PropertyGetter } from "./PropertyGetter";
-export { PropertySetter } from "./PropertySetter";
+export { ExistenceChecker } from "./ExistenceChecker.js";
+export { IInterception } from "./IInterception.js";
+export { InterceptionCollection } from "./InterceptionCollection.js";
+export { Interceptor } from "./Interceptor.js";
+export { MethodInterception } from "./MethodInterception.js";
+export { PropertyGetter } from "./PropertyGetter.js";
+export { PropertySetter } from "./PropertySetter.js";

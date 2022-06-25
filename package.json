@@ -1,6 +1,7 @@
 {
   "name": "@manuth/interceptor",
-  "version": "2.0.9",
+  "version": "3.0.0",
+  "type": "module",
   "description": "Provides a convenient way to intercept method- property- and accessor-calls of an object.",
   "author": "Manuel Thalmann <m@nuth.ch>",
   "license": "MIT",
@@ -16,6 +17,12 @@
     "Manipulation",
     "Mutation"
   ],
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "homepage": "https://github.com/manuth/Interceptor#readme",
@@ -34,7 +41,7 @@
     "rebuild": "npm run clean && npm run build",
     "watch": "npm run build -- --watch",
     "clean": "npm run build -- --clean && rimraf ./lib",
-    "lint": "eslint --max-warnings 0 ./src .eslintrc.js",
+    "lint": "eslint --max-warnings 0 ./src .eslintrc.cjs",
     "lint-ide": "npm run lint || exit 0",
     "test": "mocha",
     "prepare": "npm run patchTypeScript && npm run rebuild",

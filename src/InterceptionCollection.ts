@@ -1,4 +1,4 @@
-import { IInterception } from "./IInterception";
+import { IInterception } from "./IInterception.js";
 
 /**
  * Represents a collection of interceptions.

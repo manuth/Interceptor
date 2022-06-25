@@ -1,5 +1,5 @@
-import { ExistenceChecker } from "./ExistenceChecker";
-import { PropertyGetter } from "./PropertyGetter";
+import { ExistenceChecker } from "./ExistenceChecker.js";
+import { PropertyGetter } from "./PropertyGetter.js";
 
 /**
  * Represents the interception of a property.

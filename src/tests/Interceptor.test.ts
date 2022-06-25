@@ -1,7 +1,7 @@
-import { doesNotThrow, notStrictEqual, ok, strictEqual, throws } from "assert";
+import { doesNotThrow, notStrictEqual, ok, strictEqual, throws } from "node:assert";
 import { Random } from "random-js";
-import { Interceptor } from "../Interceptor";
-import { MethodInterception } from "../MethodInterception";
+import { Interceptor } from "../Interceptor.js";
+import { MethodInterception } from "../MethodInterception.js";
 
 /**
  * Registers tests for the {@link Interceptor `Interceptor<T>`} class.

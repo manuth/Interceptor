@@ -1,4 +1,4 @@
-import { doesNotThrow, notStrictEqual, ok, strictEqual, throws } from "assert";
+import { doesNotThrow, notStrictEqual, ok, strictEqual, throws } from "node:assert";
 import { Random } from "random-js";
 import { Interceptor } from "../Interceptor.js";
 import { MethodInterception } from "../MethodInterception.js";
